@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Are You Cool?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Are you cool?</h1>
+    <input type="text" id="response" placeholder="Type your answer here...">
+    <button onclick="sendToWebhook()">Submit</button>
+
+    <script>
+        function sendToWebhook() {
+            const webhookUrl = "<WEBHOOK_URL>";
+            const userInput = document.getElementById("response").value;
+
+            if (!userInput.trim()) {
+                alert("Please enter something before submitting.");
+                return;
+            }
+
+            fetch(webhookUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ content: userInput })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Your response has been sent!");
+                } else {
+                    alert("There was an error sending your response.");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Unable to send your response.");
+            });
+        }
+    </script>
+</body>
+</html>
